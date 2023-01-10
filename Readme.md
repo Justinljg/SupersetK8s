@@ -59,13 +59,17 @@
 
 ### Built With
 Helm
-![helm-icon-color](https://user-images.githubusercontent.com/108221154/211633332-44e4cf02-208d-4eda-82b6-ca0cae967d75.png)
+![ZwpNBdmL_400x400](https://user-images.githubusercontent.com/108221154/211635083-87d06618-1fe3-478b-81e1-b7c561bab612.jpg)
+
 Superset
 ![Superset_logo svg](https://user-images.githubusercontent.com/108221154/211633387-7bebf2f0-6dfd-4b32-a442-f61ccf991573.png)
+
 GCP
 ![download (1)](https://user-images.githubusercontent.com/108221154/211633555-364bde4d-d2a1-4498-858e-a649ff2d9d81.png)
+
 Kubernetes
 ![download (2)](https://user-images.githubusercontent.com/108221154/211633652-2beab043-7ccb-48bc-83ef-6bd800978d35.png)
+
 Spark SQL
 ![download](https://user-images.githubusercontent.com/108221154/211633719-ce0c66d1-b35e-4776-80d6-9a7dc4f38d1a.jpeg)
 
@@ -100,170 +104,11 @@ Please sign up and get a mapbox api key from https://docs.mapbox.com/help/gettin
 
 ### Working Tree
 
-The following is the working tree of this repository.
+The following is the working tree of this repository without the helper charts.
 
-'
-.
-├── charts
-│   ├── postgresql
-│   │   ├── Chart.lock
-│   │   ├── charts
-│   │   │   └── common
-│   │   │       ├── Chart.yaml
-│   │   │       ├── README.md
-│   │   │       ├── templates
-│   │   │       │   ├── _affinities.tpl
-│   │   │       │   ├── _capabilities.tpl
-│   │   │       │   ├── _errors.tpl
-│   │   │       │   ├── _images.tpl
-│   │   │       │   ├── _ingress.tpl
-│   │   │       │   ├── _labels.tpl
-│   │   │       │   ├── _names.tpl
-│   │   │       │   ├── _secrets.tpl
-│   │   │       │   ├── _storage.tpl
-│   │   │       │   ├── _tplvalues.tpl
-│   │   │       │   ├── _utils.tpl
-│   │   │       │   ├── validations
-│   │   │       │   │   ├── _cassandra.tpl
-│   │   │       │   │   ├── _mariadb.tpl
-│   │   │       │   │   ├── _mongodb.tpl
-│   │   │       │   │   ├── _postgresql.tpl
-│   │   │       │   │   ├── _redis.tpl
-│   │   │       │   │   └── _validations.tpl
-│   │   │       │   └── _warnings.tpl
-│   │   │       └── values.yaml
-│   │   ├── Chart.yaml
-│   │   ├── ci
-│   │   │   ├── extended-config.yaml
-│   │   │   ├── init-scripts.yaml
-│   │   │   ├── metrics.yaml
-│   │   │   ├── rbac.yaml
-│   │   │   ├── replication.yaml
-│   │   │   └── tls.yaml
-│   │   ├── README.md
-│   │   ├── templates
-│   │   │   ├── extra-list.yaml
-│   │   │   ├── _helpers.tpl
-│   │   │   ├── networkpolicy-egress.yaml
-│   │   │   ├── NOTES.txt
-│   │   │   ├── primary
-│   │   │   │   ├── configmap.yaml
-│   │   │   │   ├── extended-configmap.yaml
-│   │   │   │   ├── initialization-configmap.yaml
-│   │   │   │   ├── metrics-configmap.yaml
-│   │   │   │   ├── metrics-svc.yaml
-│   │   │   │   ├── networkpolicy.yaml
-│   │   │   │   ├── prometheusrule.yaml
-│   │   │   │   ├── servicemonitor.yaml
-│   │   │   │   ├── statefulset.yaml
-│   │   │   │   ├── svc-headless.yaml
-│   │   │   │   └── svc.yaml
-│   │   │   ├── psp.yaml
-│   │   │   ├── read
-│   │   │   │   ├── networkpolicy.yaml
-│   │   │   │   ├── statefulset.yaml
-│   │   │   │   ├── svc-headless.yaml
-│   │   │   │   └── svc.yaml
-│   │   │   ├── rolebinding.yaml
-│   │   │   ├── role.yaml
-│   │   │   ├── secrets.yaml
-│   │   │   ├── serviceaccount.yaml
-│   │   │   └── tls-secrets.yaml
-│   │   ├── values.schema.json
-│   │   └── values.yaml
-│   └── redis
-│       ├── Chart.lock
-│       ├── charts
-│       │   └── common
-│       │       ├── Chart.yaml
-│       │       ├── README.md
-│       │       ├── templates
-│       │       │   ├── _affinities.tpl
-│       │       │   ├── _capabilities.tpl
-│       │       │   ├── _errors.tpl
-│       │       │   ├── _images.tpl
-│       │       │   ├── _ingress.tpl
-│       │       │   ├── _labels.tpl
-│       │       │   ├── _names.tpl
-│       │       │   ├── _secrets.tpl
-│       │       │   ├── _storage.tpl
-│       │       │   ├── _tplvalues.tpl
-│       │       │   ├── _utils.tpl
-│       │       │   ├── validations
-│       │       │   │   ├── _cassandra.tpl
-│       │       │   │   ├── _mariadb.tpl
-│       │       │   │   ├── _mongodb.tpl
-│       │       │   │   ├── _postgresql.tpl
-│       │       │   │   ├── _redis.tpl
-│       │       │   │   └── _validations.tpl
-│       │       │   └── _warnings.tpl
-│       │       └── values.yaml
-│       ├── Chart.yaml
-│       ├── ci
-│       │   ├── extra-flags-values.yaml
-│       │   ├── sentinel-values.yaml
-│       │   └── standalone-values.yaml
-│       ├── img
-│       │   ├── redis-cluster-topology.png
-│       │   └── redis-topology.png
-│       ├── README.md
-│       ├── templates
-│       │   ├── configmap.yaml
-│       │   ├── extra-list.yaml
-│       │   ├── headless-svc.yaml
-│       │   ├── health-configmap.yaml
-│       │   ├── _helpers.tpl
-│       │   ├── master
-│       │   │   ├── psp.yaml
-│       │   │   ├── service.yaml
-│       │   │   └── statefulset.yaml
-│       │   ├── metrics-svc.yaml
-│       │   ├── networkpolicy.yaml
-│       │   ├── NOTES.txt
-│       │   ├── pdb.yaml
-│       │   ├── prometheusrule.yaml
-│       │   ├── replicas
-│       │   │   ├── hpa.yaml
-│       │   │   ├── service.yaml
-│       │   │   └── statefulset.yaml
-│       │   ├── rolebinding.yaml
-│       │   ├── role.yaml
-│       │   ├── scripts-configmap.yaml
-│       │   ├── secret.yaml
-│       │   ├── sentinel
-│       │   │   ├── hpa.yaml
-│       │   │   ├── node-services.yaml
-│       │   │   ├── ports-configmap.yaml
-│       │   │   ├── service.yaml
-│       │   │   └── statefulset.yaml
-│       │   ├── serviceaccount.yaml
-│       │   ├── servicemonitor.yaml
-│       │   └── tls-secret.yaml
-│       ├── values.schema.json
-│       └── values.yaml
-├── Chart.yaml
-├── images
-│   ├── dashboard_export.png
-│   ├── dashboard_import.png
-│   ├── db_connect_error.png
-│   ├── import_dashboard.png
-│   ├── Readme.md
-│   └── role_access.png
-├── my-values.yaml
-├── Readme.md
-└── templates
-    ├── deployment.yaml
-    ├── _helpers.tpl
-    ├── hpa.yaml
-    ├── ingress.yaml
-    ├── NOTES.txt
-    ├── serviceaccount.yaml
-    ├── service.yaml
-    └── tests
-        └── test-connection.yaml
-'
+![image](https://user-images.githubusercontent.com/108221154/211634970-5ac57bc0-8bf1-4571-a6f9-e5b6055de51f.png)
 
-This was obtained from https://superset.apache.org/docs/installation/running-on-kubernetes/. This repository adjusts the configurations for the ingress and OAUTH.
+This helm chart obtained from https://superset.apache.org/docs/installation/running-on-kubernetes/. This repository adjusts the configurations for the ingress and OAUTH.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
