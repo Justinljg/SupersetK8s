@@ -40,6 +40,9 @@ bootstrapScript: |
   rm -rf /var/lib/apt/lists/* && \
   pip install \
     psycopg2-binary==2.9.1 \
+    authlib \
+    flask_oauthlib \
+    pyhive \
     redis==3.5.3 && \
   if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap; fi
 
@@ -55,7 +58,7 @@ envFromSecrets: []
 
 # -- Extra environment variables that will be passed into pods
 extraEnv:
-  {}
+  # AUTH_DOMAIN: 
   # Different gunicorn settings, refer to the gunicorn documentation
   # https://docs.gunicorn.org/en/stable/settings.html#
   # These variables are used as Flags at the gunicorn startup
@@ -72,7 +75,7 @@ extraEnv:
   # SERVER_LIMIT_REQUEST_LINE: 0
   # SERVER_LIMIT_REQUEST_FIELD_SIZE: 0
 
-  # OAUTH_HOME_DOMAIN: ..
+  OAUTH_HOME_DOMAIN: <insert OAUTH HOME DOMAIN>
   # # If a whitelist is not set, any address that can use your OAuth2 endpoint will be able to login.
   # #   this includes any random Gmail address if your OAuth2 Web App is set to External.
   # OAUTH_WHITELIST_REGEX: ...
@@ -89,8 +92,9 @@ extraEnvRaw:
 
 # -- Extra environment variables to pass as secrets
 extraSecretEnv:
-  {}
-  # MAPBOX_API_KEY: ...
+  GOOGLE_KEY: ToBeUpdated
+  GOOGLE_SECRET: ToBeUpdated
+  MAPBOX_API_KEY: ToBeUpdated
   # # Google API Keys: https://console.cloud.google.com/apis/credentials
   # GOOGLE_KEY: ...
   # GOOGLE_SECRET: ...
@@ -135,41 +139,39 @@ extraVolumeMounts:
 # WARNING: the order is not guaranteed
 # Files can be passed as helm --set-file configOverrides.my-override=my-file.py
 configOverrides:
-  {}
-  # extend_timeout: |
-  #    # Extend timeout to allow long running queries.
-  #    SUPERSET_WEBSERVER_TIMEOUT = ...
-  # enable_oauth: |
-  #   from flask_appbuilder.security.manager import (AUTH_DB, AUTH_OAUTH)
-  #   AUTH_TYPE = AUTH_OAUTH
-  #   OAUTH_PROVIDERS = [
-  #       {
-  #           "name": "google",
-  #           "whitelist": [ os.getenv("OAUTH_WHITELIST_REGEX", "") ],
-  #           "icon": "fa-google",
-  #           "token_key": "access_token",
-  #           "remote_app": {
-  #               "client_id": os.environ.get("GOOGLE_KEY"),
-  #               "client_secret": os.environ.get("GOOGLE_SECRET"),
-  #               "api_base_url": "https://www.googleapis.com/oauth2/v2/",
-  #               "client_kwargs": {"scope": "email profile"},
-  #               "request_token_url": None,
-  #               "access_token_url": "https://accounts.google.com/o/oauth2/token",
-  #               "authorize_url": "https://accounts.google.com/o/oauth2/auth",
-  #               "authorize_params": {"hd": os.getenv("OAUTH_HOME_DOMAIN", "")}
-  #           }
-  #       }
-  #   ]
-  #   # Map Authlib roles to superset roles
-  #   AUTH_ROLE_ADMIN = 'Admin'
-  #   AUTH_ROLE_PUBLIC = 'Public'
-  #   # Will allow user self registration, allowing to create Flask users from Authorized User
-  #   AUTH_USER_REGISTRATION = True
-  #   # The default user self registration role
-  #   AUTH_USER_REGISTRATION_ROLE = "Admin"
-  # secret: |
-  #   # Generate your own secret key for encryption. Use openssl rand -base64 42 to generate a good key
-  #   SECRET_KEY = 'YOUR_OWN_RANDOM_GENERATED_SECRET_KEY'
+  enable_oauth: |
+    # This will make sure the redirect_uri is properly computed, even with SSL offloading
+    ENABLE_PROXY_FIX = True
+
+    from flask_appbuilder.security.manager import AUTH_OAUTH
+    AUTH_TYPE = AUTH_OAUTH
+    OAUTH_PROVIDERS = [
+        {
+            "name": "google",
+            "icon": "fa-google",
+            "token_key": "access_token",
+            "remote_app": {
+                "client_id": os.getenv("GOOGLE_KEY"),
+                "client_secret": os.getenv("GOOGLE_SECRET"),
+                "api_base_url": "https://www.googleapis.com/oauth2/v2/",
+                "client_kwargs": {"scope": "email profile"},
+                "request_token_url": None,
+                "access_token_url": "https://accounts.google.com/o/oauth2/token",
+                "authorize_url": "https://accounts.google.com/o/oauth2/auth",
+                "authorize_params": {"hd": os.getenv("AUTH_DOMAIN", "")},
+            },
+        }
+    ]
+
+    # Map Authlib roles to superset roles
+    AUTH_ROLE_ADMIN = 'Admin'
+    AUTH_ROLE_PUBLIC = 'Public'
+
+    # Will allow user self registration, allowing to create Flask users from Authorized User
+    AUTH_USER_REGISTRATION = True
+
+    # The default user self registration role
+    AUTH_USER_REGISTRATION_ROLE = "Admin"
 
 # -- Same as above but the values are files
 configOverridesFiles:
@@ -202,20 +204,26 @@ service:
   loadBalancerIP: null
 
 ingress:
-  enabled: false
+  enabled: true
   # ingressClassName: nginx
   annotations:
-    {}
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/issue-temporary-certificate: "true"
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: superset
     # kubernetes.io/tls-acme: "true"
     ## Extend timeout to allow long running queries.
     # nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
     # nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
     # nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
   path: /
-  pathType: ImplementationSpecific
+  pathType: Prefix
   hosts:
-    - chart-example.local
-  tls: []
+    - inputhostname
+  tls:
+  - hosts:
+      - inputhostname
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

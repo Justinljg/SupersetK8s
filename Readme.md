@@ -101,7 +101,8 @@ Please sign up and get a mapbox api key from https://docs.mapbox.com/help/gettin
 ### Working Tree
 
 The following is the working tree of this repository.
-"
+
+'
 .
 ├── charts
 │   ├── postgresql
@@ -260,7 +261,8 @@ The following is the working tree of this repository.
     ├── service.yaml
     └── tests
         └── test-connection.yaml
-"
+'
+
 This was obtained from https://superset.apache.org/docs/installation/running-on-kubernetes/. This repository adjusts the configurations for the ingress and OAUTH.
 
 <!-- USAGE EXAMPLES -->
