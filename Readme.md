@@ -347,12 +347,15 @@ The following configurations can be seen in line 206 in my-value.yaml as shown:
 ### OAUTH
 Obtain the required inputs for the OATUH from GCP. 
 
+
 Insert the home domain for the users if its @gmail.com input gmail.com. This can be seen in line 78 from the my-values.yaml.    
-    
+
+
     OAUTH_HOME_DOMAIN: <insert OAUTH HOME DOMAIN>
 
 
 Input the google key & secret as well as the map box api token obtained in the prerequsites. This can be seen in line 94 from the my-values.yaml.
+
 
     extraSecretEnv:
       GOOGLE_KEY: ToBeUpdated
@@ -361,6 +364,7 @@ Input the google key & secret as well as the map box api token obtained in the p
 
   
 Input the variables for OAUTH providers as seen in line 141 from the my-values.yaml.
+
 
     configOverrides:
       enable_oauth: |
@@ -397,13 +401,16 @@ Input the variables for OAUTH providers as seen in line 141 from the my-values.y
         # The default user self registration role
         AUTH_USER_REGISTRATION_ROLE = "Admin"
 
+
 Assuming you already have Helm installed, execute the following command in your CLI.
+
 
     helm upgrade superset superset/superset --install --values my_values.yaml --namespace <insert namespace>
 
   
 Superset can now be used in the host name in the browser that was defined in the ingress.
-  
+ 
+ 
 For a user-friendly guide on how to use Superset, you can refer to this https://epoch.aisingapore.org/2023/01/apache-superset-an-open-source-visualization-tool/.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
