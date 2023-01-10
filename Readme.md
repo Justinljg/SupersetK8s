@@ -58,19 +58,19 @@
 
 
 ### Built With
-Helm
+`Helm`
 ![ZwpNBdmL_400x400](https://user-images.githubusercontent.com/108221154/211635083-87d06618-1fe3-478b-81e1-b7c561bab612.jpg)
 
-Superset
-![Superset_logo svg](https://user-images.githubusercontent.com/108221154/211633387-7bebf2f0-6dfd-4b32-a442-f61ccf991573.png)
+`Superset`
+![58649580-eca4-11ea-844d-c2ddca24b226](https://user-images.githubusercontent.com/108221154/211635281-3db93b64-b8c5-4707-b151-c30d337e1c66.png)
 
-GCP
+`GCP`
 ![download (1)](https://user-images.githubusercontent.com/108221154/211633555-364bde4d-d2a1-4498-858e-a649ff2d9d81.png)
 
-Kubernetes
+`Kubernetes`
 ![download (2)](https://user-images.githubusercontent.com/108221154/211633652-2beab043-7ccb-48bc-83ef-6bd800978d35.png)
 
-Spark SQL
+`Spark SQL`
 ![download](https://user-images.githubusercontent.com/108221154/211633719-ce0c66d1-b35e-4776-80d6-9a7dc4f38d1a.jpeg)
 
 
@@ -95,11 +95,11 @@ More specific instructions can be seen in https://docs.github.com/en/repositorie
 
 Please refer to the https://helm.sh/docs/intro/install/ instructions to install helm.
 A snippet of the usage of script to install helm is as shown below:
-'''
+`
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 $ chmod 700 get_helm.sh
 $ ./get_helm.sh
-'''
+`
 Please sign up and get a mapbox api key from https://docs.mapbox.com/help/getting-started/access-tokens/. The geographical visualisations will not work if you do not include the mapbox api key into the my-values.yaml file later.
 
 ### Working Tree
@@ -118,7 +118,7 @@ These were the configurations made in order to run Superset on Kubernetes with I
 The additional dependencies of authlib,flask_oauthlib and pyhive were installed for the OAUTH and the usage of the Spark Thrift SQL server.
 
 This is configured at line 38 of the bootstrapScript of the my-values.yaml. If you require additional dependencies, please input accordingly. A snippet of the values is as shown:
-'''
+`
 bootstrapScript: |
   #!/bin/bash
   rm -rf /var/lib/apt/lists/* && \
@@ -129,13 +129,13 @@ bootstrapScript: |
     pyhive \
     redis==3.5.3 && \
   if [ ! -f ~/bootstrap ]; then echo "Running Superset with uid {{ .Values.runAsUser }}" > ~/bootstrap; fi
-'''
+`
 ### Ingress
 nginx was used to implement the ingress. Input the host name for the redirected url, an example could be organisation-superset.net.The following configurations can be seen in line 206 in my-value.yaml as shown:
-'''
+`
 ingress:
   enabled: true
-  # ingressClassName: nginx
+  #ingressClassName: nginx
   annotations:
     acme.cert-manager.io/http01-edit-in-place: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -154,27 +154,30 @@ ingress:
   tls:
   - hosts:
       - inputhostname
-  # - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-'''
+  #secretName: chart-example-tls
+  #hosts:
+  #chart-example.local
+`
 ### OAUTH
 Obtain the required inputs for the OATUH from GCP. 
 
 Insert the home domain for the users if its @gmail.com input gmail.com. This can be seen in line 78 from the my-values.yaml.
-'''
+`
 OAUTH_HOME_DOMAIN: <insert OAUTH HOME DOMAIN>
-'''
+`
+
 Input the google key & secret as well as the map box api token obtained in the prerequsites. This can be seen in line 94 from the my-values.yaml.
-'''
+
+`
 extraSecretEnv:
   GOOGLE_KEY: ToBeUpdated
   GOOGLE_SECRET: ToBeUpdated
   MAPBOX_API_KEY: ToBeUpdated
-'''
+`
 
 Input the variables for OAUTH providers as seen in line 141 from the my-values.yaml.
-'''
+
+`
 configOverrides:
   enable_oauth: |
     # This will make sure the redirect_uri is properly computed, even with SSL offloading
@@ -209,17 +212,15 @@ configOverrides:
 
     # The default user self registration role
     AUTH_USER_REGISTRATION_ROLE = "Admin"
-'''
+`
 
-### Helm install
 Assuming you already have Helm installed, execute the following command in your CLI.
 
-'''
+`
 helm upgrade superset superset/superset --install --values my_values.yaml --namespace <insert namespace>
-'''
+`
 Superset can now be used in the host name in the browser that was defined in the ingress.
 
-### User 
 For a user-friendly guide on how to use Superset, you can refer to this * [![post][post-url]] :)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
