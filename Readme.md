@@ -58,11 +58,17 @@
 
 
 ### Built With
+Helm
+![helm-icon-color](https://user-images.githubusercontent.com/108221154/211633332-44e4cf02-208d-4eda-82b6-ca0cae967d75.png)
+Superset
+![Superset_logo svg](https://user-images.githubusercontent.com/108221154/211633387-7bebf2f0-6dfd-4b32-a442-f61ccf991573.png)
+GCP
+![download (1)](https://user-images.githubusercontent.com/108221154/211633555-364bde4d-d2a1-4498-858e-a649ff2d9d81.png)
+Kubernetes
+![download (2)](https://user-images.githubusercontent.com/108221154/211633652-2beab043-7ccb-48bc-83ef-6bd800978d35.png)
+Spark SQL
+![download](https://user-images.githubusercontent.com/108221154/211633719-ce0c66d1-b35e-4776-80d6-9a7dc4f38d1a.jpeg)
 
-* [download](https://user-images.githubusercontent.com/108221154/211616864-9a660313-16fd-4d36-a86b-9f06aa95039e.png)]
-* [Superset.js
-* [GCP.js]
-* [SparkThriftServer.js]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,7 +101,7 @@ Please sign up and get a mapbox api key from https://docs.mapbox.com/help/gettin
 ### Working Tree
 
 The following is the working tree of this repository.
-
+"
 .
 ├── charts
 │   ├── postgresql
@@ -254,7 +260,7 @@ The following is the working tree of this repository.
     ├── service.yaml
     └── tests
         └── test-connection.yaml
-
+"
 This was obtained from https://superset.apache.org/docs/installation/running-on-kubernetes/. This repository adjusts the configurations for the ingress and OAUTH.
 
 <!-- USAGE EXAMPLES -->
