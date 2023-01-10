@@ -390,10 +390,9 @@ Input the variables for OAUTH providers as seen in line 141 from the my-values.y
         AUTH_USER_REGISTRATION_ROLE = "Admin"
 
 Assuming you already have Helm installed, execute the following command in your CLI.
-  
-`
-helm upgrade superset superset/superset --install --values my_values.yaml --namespace <insert namespace>
-`
+
+    helm upgrade superset superset/superset --install --values my_values.yaml --namespace <insert namespace>
+
   
 Superset can now be used in the host name in the browser that was defined in the ingress.
   
