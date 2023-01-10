@@ -1,85 +1,228 @@
-Superset in vbrani
-===
-1. To host Superset in vbrani without OAUTH
-2. To host Superset in vbrani with OAUTH
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-### Usage Instructions
-#### 1. Deploy Superset with Ingress 
-```
-helm upgrade superset superset/superset --install --values values_withIngress.yaml --namespace batch11-dataops-playground
-```
-Outcome:
-```
-NAME: superset
-LAST DEPLOYED: MM DD HH:MM:SS YYYY
-NAMESPACE: batch11-dataops-playground
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-NOTES:
-1. Get the application URL by running these commands:
-  https://superset.vbrani.aisingapore.net/
-```
 
-#### 2. Deploy Superset with Ingress and OAUTH
-Please update the following fields in values_withIngress_OAUTH.yaml before run the following command.
-```
-extraSecretEnv:
-  GOOGLE_KEY: ToBeUpdated
-  GOOGLE_SECRET: ToBeUpdated
-  MAPBOX_API_KEY: ToBeUpdated
-```
-```
-helm upgrade superset superset/superset --install --values values_withIngress_OAUTH.yaml --namespace batch11-dataops-playground
-```
-Outcome:
-```
-NAME: superset
-LAST DEPLOYED: MM DD HH:MM:SS YYYY
-NAMESPACE: batch11-dataops-playground
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-NOTES:
-1. Get the application URL by running these commands:
-  https://superset.vbrani.aisingapore.net/
-```
 
-#### 3. Connect to database
-The current deployment is connected to an Apache Spark SQL database server.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
 
-To connect to other databases, please refer to the [official Apache Superset docs](https://superset.apache.org/docs/databases/installing-database-drivers) to check for PyPI dependencies and connection string format.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-#### 4. Export Superset Dashboard, Chart and Dataset
-Go to the Dashboards list page, from the "Actions" columns of to-be-exported dashboard, click "Export" button. The Dashboards, its Charts and its Datasets will be exported together.
+<h3 align="center">project_title</h3>
 
-![Superset Dashboard Export](images/dashboard_export.png)
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+  </p>
+</div>
 
-#### 5. Import Superset Dashboard, Chart and Dataset
-5.1 Go to the Dashboards list page, from the right top cornor, click "Import Dashboards" button. The Dashboards, its Charts and its Datasets will be imported together.
 
-![Superset Dashboard Import](images/dashboard_import.png)
 
-5.2 
-Choose the file that going to be imported and click "IMPORT" button. The dashboards will be imported after that.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-![Superset Dashboard Import Dialogbox](images/import_dashboard.png)
 
-#### 6. Role-Based Access Management
-Roles can be configured in ```Settings > List Roles > +```.
 
-Superset comes with several predefined roles as described in the [official documentation](https://superset.apache.org/docs/security/).
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-The "Gamma" role can be used as a basic template for new roles. Thereafter, datasource accesses can be granted to roles to restrict access to specific datasets, which in turn restricts what users with that role can view in dashboards.
-![Superset role access screenshot](images/role_access.png)
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-#### 7. Uninstall Superset with Helm
-```
-helm uninstall superset --namespace batch11-dataops-playground
-```
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
-### Known Issues
-* Database connection error message:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-![Database error message screenshot](images/db_connect_error.png)
 
+
+### Built With
+
+* [![Next][Next.js]][Next-url]
+* [![React][React.js]][React-url]
+* [![Vue][Vue.js]][Vue-url]
+* [![Angular][Angular.io]][Angular-url]
+* [![Svelte][Svelte.dev]][Svelte-url]
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/github_username/repo_name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Feature 1
+- [ ] Feature 2
+- [ ] Feature 3
+    - [ ] Nested Feature
+
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+
+Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* []()
+* []()
+* []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[product-screenshot]: images/screenshot.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
