@@ -58,7 +58,7 @@ envFromSecrets: []
 
 # -- Extra environment variables that will be passed into pods
 extraEnv:
-  AUTH_DOMAIN: insertyourdomain
+  AUTH_DOMAIN: superset.vbrani.aisingapore.net
   # Different gunicorn settings, refer to the gunicorn documentation
   # https://docs.gunicorn.org/en/stable/settings.html#
   # These variables are used as Flags at the gunicorn startup
@@ -92,9 +92,9 @@ extraEnvRaw:
 
 # -- Extra environment variables to pass as secrets
 extraSecretEnv:
-  GOOGLE_KEY: Key in value
-  GOOGLE_SECRET: Key in value
-  MAPBOX_API_KEY: Key in value
+  GOOGLE_KEY: ToBeUpdated
+  GOOGLE_SECRET: ToBeUpdated
+  # MAPBOX_API_KEY: ...
   # # Google API Keys: https://console.cloud.google.com/apis/credentials
   # GOOGLE_KEY: ...
   # GOOGLE_SECRET: ...
@@ -220,10 +220,10 @@ ingress:
   path: /
   pathType: Prefix
   hosts:
-    - insertyourdomain
+    - superset.vbrani.aisingapore.net
   tls:
   - hosts:
-      - insertyourdomain
+      - superset.vbrani.aisingapore.net
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
