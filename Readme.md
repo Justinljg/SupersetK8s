@@ -8,8 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-[![Contributors][contributors-shield]][contributors-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -68,10 +66,10 @@
 
 ### Built With
 
-* [![Helm][![download](https://user-images.githubusercontent.com/108221154/211616864-9a660313-16fd-4d36-a86b-9f06aa95039e.png)][Helm-url]]
-* [![Superset][Superset.js][Superset-url]]
-* [![GCP][GCP.js][GoogleCloud-url]]
-* [![SparkThriftServer][SparkThriftServer.js][Spark-url]]
+* [![Helm][![download](https://user-images.githubusercontent.com/108221154/211616864-9a660313-16fd-4d36-a86b-9f06aa95039e.png)][Helm-url]
+* [![Superset][Superset.js][Superset-url]
+* [![GCP][GCP.js][GoogleCloud-url]
+* [![SparkThriftServer][SparkThriftServer.js][Spark-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
