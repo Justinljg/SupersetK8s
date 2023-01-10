@@ -70,12 +70,15 @@ This Project includes a configured Superset on Kubernetes with Ingress and OAUTH
 `Helm`
 
 
-![ZwpNBdmL_400x400](https://user-images.githubusercontent.com/108221154/211635083-87d06618-1fe3-478b-81e1-b7c561bab612.jpg)
+![download (3)](https://user-images.githubusercontent.com/108221154/211644774-03ebbf71-6e07-4c60-9975-349dd00cc16c.png)
+
 
 `Superset`
 
 
-![58649580-eca4-11ea-844d-c2ddca24b226](https://user-images.githubusercontent.com/108221154/211635281-3db93b64-b8c5-4707-b151-c30d337e1c66.png)
+![download (4)](https://user-images.githubusercontent.com/108221154/211644936-5af5b3a8-4a12-40ae-b7af-774c1be0b360.png)
+
+
 
 `GCP`
 
