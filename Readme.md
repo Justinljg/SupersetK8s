@@ -55,8 +55,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[https://github.com/Justinljg/SupersetK8s](https://upload.wikimedia.org/wikipedia/commons/0/0e/Superset_logo.svg)
-`justinljg`, `SupersetK8s`,`Superset K8s with Ingress and OAUTH`,`This Project includes a configured Superset on Kubernetes with Ingress and OAUTH`
+`https://github.com/Justinljg/SupersetK8s`
+
+This Project includes a configured Superset on Kubernetes with Ingress and OAUTH.
+
+`justinljg`, `SupersetK8s`,`Superset K8s with Ingress and OAUTH`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
