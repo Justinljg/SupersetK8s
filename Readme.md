@@ -8,13 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://https://github.com/Justinljg">
-    ![logo](https://user-images.githubusercontent.com/108221154/211616284-107186df-0e0f-4dbc-aba5-e5943f6c8062.png)
-  </a>
-
 <h3 align="center">Superset K8s with Ingress and OAUTH</h3>
 
   <p align="center">
