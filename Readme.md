@@ -11,11 +11,12 @@
 <h3 align="center">Superset K8s with Ingress and OAUTH</h3>
 
   <p align="center">
-    Project Description
-    This project aims to configure the values file in order to incorporate ingress and Oauth into the helm chart of Kubernetes Superset
+  Project Description:
+  
+  This project aims to configure the values file in order to incorporate ingress and Oauth into the helm chart of Kubernetes Superset
     <br />
     <a href="https://github.com/Justinljg/SupersetK8s/"><strong>Explore the docs »</strong></a>
-  </p>
+
 </div>
 
 
